@@ -23,8 +23,8 @@
    <center>
       <SplitPane dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
-            <TextArea fx:id="txtAreaMa" prefHeight="358.0" prefWidth="285.0" />
-            <TextArea fx:id="txtAreaOut" prefHeight="358.0" prefWidth="305.0" />
+            <TextArea fx:id="txtAreaMa" editable="false" prefHeight="358.0" prefWidth="285.0" />
+            <TextArea fx:id="txtAreaOut" editable="false" prefHeight="358.0" prefWidth="305.0" />
          </items>
       </SplitPane>
    </center>

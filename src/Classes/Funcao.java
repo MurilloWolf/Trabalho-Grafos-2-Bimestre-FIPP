@@ -53,7 +53,7 @@ public class Funcao {
                     //pega a lista de lista 
                     list = MA;
                 } else {
-                    System.out.println("Linha "+lin);
+                    
                     //insere os elementos de vet(vetor de String ) na posição "lin" do arrayList de arrayList 
                     for (int i = 0; i < vet.length; i++) {
 
