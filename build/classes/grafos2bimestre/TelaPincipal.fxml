@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grafos2bimestre.TelaPincipalController">
+   <top>
+      <ToolBar blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="200.0">
+        <items>
+          <Button mnemonicParsing="false" onAction="#abrirArquivo" text="Abrir" />
+            <Button mnemonicParsing="false" text="Act#1" />
+            <Button mnemonicParsing="false" text="Act#2" />
+        </items>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </ToolBar>
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <items>
+            <TextArea fx:id="txtAreaMa" prefHeight="358.0" prefWidth="285.0" />
+            <TextArea fx:id="txtAreaOut" prefHeight="358.0" prefWidth="305.0" />
+         </items>
+      </SplitPane>
+   </center>
+</BorderPane>

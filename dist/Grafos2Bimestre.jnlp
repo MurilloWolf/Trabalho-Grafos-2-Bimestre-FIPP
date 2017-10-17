@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Grafos2Bimestre.jnlp">
+  <information>
+    <title>Grafos2Bimestre</title>
+    <vendor>Aluno</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Grafos2Bimestre.jar" size="5666" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Grafos2Bimestre" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="grafos2bimestre.Grafos2Bimestre"  name="Grafos2Bimestre" />
+  <update check="always"/>
+</jnlp>
