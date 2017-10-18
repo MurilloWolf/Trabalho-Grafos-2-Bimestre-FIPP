@@ -13,7 +13,7 @@
         <items>
           <Button mnemonicParsing="false" onAction="#abrirArquivo" text="Abrir" />
             <Button mnemonicParsing="false" text="Act#1" />
-            <Button mnemonicParsing="false" text="Act#2" />
+            <Button mnemonicParsing="false" onAction="#algoritmo2" text="Act#2" />
         </items>
          <padding>
             <Insets left="10.0" />
@@ -23,8 +23,8 @@
    <center>
       <SplitPane dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
-            <TextArea fx:id="txtAreaMa" prefHeight="358.0" prefWidth="285.0" />
-            <TextArea fx:id="txtAreaOut" prefHeight="358.0" prefWidth="305.0" />
+            <TextArea fx:id="txtAreaMa" editable="false" prefHeight="358.0" prefWidth="285.0" />
+            <TextArea fx:id="txtAreaOut" editable="false" prefHeight="358.0" prefWidth="305.0" />
          </items>
       </SplitPane>
    </center>

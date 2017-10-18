@@ -35,5 +35,13 @@ public class TelaPincipalController implements Initializable {
          txtAreaMa.setText(Funcao.maToString());
          
     }
+
+    @FXML
+    private void algoritmo2(ActionEvent event) {
+       if( Funcao.algoritmo2())
+            System.out.println("sucesso");
+       else
+            System.out.println("erro no algoritmo 2");
+    }
     
 }

@@ -13,7 +13,7 @@
         <items>
           <Button mnemonicParsing="false" onAction="#abrirArquivo" text="Abrir" />
             <Button mnemonicParsing="false" text="Act#1" />
-            <Button mnemonicParsing="false" text="Act#2" />
+            <Button mnemonicParsing="false" onAction="#algoritmo2" text="Act#2" />
         </items>
          <padding>
             <Insets left="10.0" />
