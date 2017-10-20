@@ -12,8 +12,8 @@
       <ToolBar blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="200.0">
         <items>
           <Button mnemonicParsing="false" onAction="#abrirArquivo" text="Abrir" />
-            <Button mnemonicParsing="false" text="Act#1" />
-            <Button mnemonicParsing="false" onAction="#algoritmo2" text="Act#2" />
+            <Button mnemonicParsing="false" onAction="#algoritmokruskal" text="kruskal" />
+            <Button mnemonicParsing="false" onAction="#algoritmo2" text="Prim" />
         </items>
          <padding>
             <Insets left="10.0" />

@@ -8,6 +8,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
@@ -38,10 +40,24 @@ public class TelaPincipalController implements Initializable {
 
     @FXML
     private void algoritmo2(ActionEvent event) {
-       if( Funcao.algoritmo2())
-            System.out.println("sucesso");
-       else
-            System.out.println("erro no algoritmo 2");
+       if( Funcao.algoritmoPrim()){
+           String outTela = Funcao.getOutPut();
+           
+           txtAreaOut.setText(outTela);
+       }
+       else{
+           
+           Alert a = new Alert(AlertType.ERROR);
+           a.setHeaderText("Erro ao executar Algoritmo de Prim");
+           
+           a.setContentText(Funcao.getErro());
+           a.showAndWait();
+       }
+            
+    }
+
+    @FXML
+    private void algoritmokruskal(ActionEvent event) {
     }
     
 }

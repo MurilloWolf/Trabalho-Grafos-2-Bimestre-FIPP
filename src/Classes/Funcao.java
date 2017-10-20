@@ -11,9 +11,15 @@ public class Funcao {
     
     private static ArrayList<ArrayList<Node>> MA;
     private static ArrayList<String> rotulosMA;
-    
+    private static ArrayList<String> arestasPrin;
+    private static ArrayList<String> ordemExecVetor;
+    private static String erro;
+    private static int totalPrin;
     public Funcao(int length){
-        
+        erro="";
+        ordemExecVetor = new ArrayList();
+        totalPrin= 0;
+        arestasPrin= new ArrayList();
         rotulosMA = new ArrayList();
         MA = new ArrayList();
         
@@ -22,6 +28,22 @@ public class Funcao {
             
         }
      
+    }
+
+    public static int getTotalPrin() {
+        return totalPrin;
+    }
+
+    public static void setTotalPrin(int totalPrin) {
+        Funcao.totalPrin = totalPrin;
+    }
+
+    public static ArrayList<String> getArestasPrin() {
+        return arestasPrin;
+    }
+
+    public static void setArestasPrin(ArrayList<String> arestasPrin) {
+        Funcao.arestasPrin = arestasPrin;
     }
      public static void geraMA(File file) {
         String[] vet;
@@ -98,10 +120,10 @@ public class Funcao {
          return ret;
      }
      
-     public static boolean algoritmo2(){
+     public static boolean algoritmoPrim(){
          boolean result = false, vet[];
          int menor =-1 ;
-         
+         String aux;
          /*vetor que contem a pos da matriz da qual o 
           elemento foi capturado 
           posmenor[0] = i
@@ -123,13 +145,13 @@ public class Funcao {
              vet[0]= true;
              
              /*PERCORRE A MATRIZ*/
-             for (int k = 0; k<vet.length; k++) {
+             for (int k = 0; k<vet.length -1; k++) {
                  
           
                 /*PERCORRE O VETOR NORMAL*/
                 for (int i = 0; i < vet.length; i++) {
-
-
+                  //  System.out.println("linha observada: "+rotulosMA.get(i));
+                  //  System.out.println("colunas :");
                     /*PERCORRE O VETOR NEGADO*/
                     for (int j = 0; j < vet.length; j++) {
 
@@ -138,7 +160,7 @@ public class Funcao {
                         */
                         /*mudar o valor do menor */
                         if(vet[i] && !vet[j] ){
-                             if(menor <0){
+                             if(menor <=0){
                                  menor = MA.get(i).get(j).getValor();
                                  aresta = rotulosMA.get(i)+rotulosMA.get(j);
                                     posmenor[0]=i;
@@ -147,7 +169,7 @@ public class Funcao {
                               
                                  
                              }else{
-                                 if(MA.get(i).get(j).getValor() !=0 && MA.get(i).get(j).getValor()<menor){
+                                 if(MA.get(i).get(j).getValor() >0 && MA.get(i).get(j).getValor()<=menor){
                                        menor = MA.get(i).get(j).getValor();
                                         aresta = rotulosMA.get(i)+rotulosMA.get(j);
                                            posmenor[0]=i;
@@ -155,10 +177,12 @@ public class Funcao {
                                  }
  
                              }
-                          
+                          //  System.out.println("\t"+rotulosMA.get(j));
                              
                         }
+                       
                     }
+                 //   System.out.println("Menor numero encontrado: "+menor);
                 }//
                 
                 if(vet[posmenor[0]])
@@ -166,25 +190,71 @@ public class Funcao {
                 else
                     vet[posmenor[0]]=true;
                 
-                 System.out.printf("vetor: ");
-                 for (int i = 0; i < vet.length; i++) {
-                     if (vet[i]) {
-                           System.out.printf(" 1");
-                     }
-                     else
-                         System.out.printf(" 0");
-                   
-                 }
-                 System.out.println("");
-                System.out.println("Aresta: "+aresta);
+                totalPrin +=menor;
+                menor = -1;
+                
+                aux="";
+                if(ordemExecVetor!=null){
+                    
+                   aux = "vetor :{";
+                    for (int i = 0; i < vet.length; i++) {
+                        if (vet[i]) {
+
+                              aux +=",1";
+                        }
+                        else
+                            aux+=",0";
+                        
+
+                    }
+                    aux +="}";
+                    ordemExecVetor.add(aux);
+                }
+               
+                if(arestasPrin!=null)
+                    arestasPrin.add(aresta);
+                
                 result = true;
              }
              }catch(Exception ex){
-                 System.out.println("erro: "+ex.getMessage());
+                erro = ex.getMessage();
                  return false;
              }
          }
          
          return result ;
      }
+
+    public static ArrayList<String> getOrdemExecVetor() {
+        return ordemExecVetor;
+    }
+
+    public static String getErro() {
+        return erro;
+    }
+
+    public static void setErro(String erro) {
+        Funcao.erro = erro;
+    }
+
+    public static void setOrdemExecVetor(ArrayList<String> ordemExecVetor) {
+        Funcao.ordemExecVetor = ordemExecVetor;
+    }
+    
+    public static String getOutPut(){
+        String out="";
+        if(ordemExecVetor!=null){
+            out="Ordem das Aresta Geradas: \n";
+            for (int i = 0; i < arestasPrin.size(); i++) {
+                out += arestasPrin.get(i)+" ";
+            }
+            out +="\n\nSoma das distancias da aresta :"+totalPrin+"\n\n";
+            out +="Ordem de execução do vetor :\n\n";
+            
+            for (int i = 0; i < ordemExecVetor.size(); i++) {
+                out+=ordemExecVetor.get(i)+"\n";
+            }
+        }
+        return out;
+    }
 }
