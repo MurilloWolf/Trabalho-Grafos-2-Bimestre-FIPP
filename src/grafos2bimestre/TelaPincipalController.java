@@ -58,6 +58,20 @@ public class TelaPincipalController implements Initializable {
 
     @FXML
     private void algoritmokruskal(ActionEvent event) {
+        
+         if( Funcao.algoritKruskal()){
+           String outTela = Funcao.getOutKruskal();
+           
+           txtAreaOut.setText(outTela);
+       }
+       else{
+           
+           Alert a = new Alert(AlertType.ERROR);
+           a.setHeaderText("Erro ao executar Algoritmo de Kruskal");
+           
+           a.setContentText(Funcao.getErro());
+           a.showAndWait();
+       }
     }
     
 }

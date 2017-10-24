@@ -15,6 +15,10 @@ public class Funcao {
     private static ArrayList<String> ordemExecVetor;
     private static String erro;
     private static int totalPrin;
+    private static ArrayList<String> arestasKruskal;
+    private static ArrayList<String> arestasMinimas;
+    private static int custoKruskal;
+    
     public Funcao(int length){
         erro="";
         ordemExecVetor = new ArrayList();
@@ -27,7 +31,9 @@ public class Funcao {
             MA.add(new ArrayList());
             
         }
-     
+        arestasKruskal = new ArrayList();
+        arestasMinimas = new ArrayList();
+        custoKruskal=0;
     }
 
     public static int getTotalPrin() {
@@ -257,4 +263,79 @@ public class Funcao {
         }
         return out;
     }
+    
+
+    public static boolean algoritKruskal()
+    {
+        boolean result = false, linha[],coluna[];
+        String aux ="";
+        String[] vet;
+        int l,c;
+        //rotula todos os vertices da matriz
+        for(int i=0; i<rotulosMA.size(); i++)
+        {
+            for(int j=0; j<rotulosMA.size(); j++)
+            {
+                if(MA.get(i).get(j).getValor()!=0)
+                {
+                    aux = rotulosMA.get(i)+","+rotulosMA.get(j)+","+MA.get(i).get(j).getValor();
+                    if(!arestasKruskal.contains(aux))
+                        arestasKruskal.add(aux);
+                    aux="";
+                }
+            }
+        }
+        //cria dois vetores para as verificaçoes
+        linha= new boolean[MA.size()];
+        coluna= new boolean[MA.size()];
+        for(int i=0; i<linha.length; i++)
+        {
+            linha[i]=false;
+            coluna[i]=false;
+        }
+        //add as arestas
+        for(int i=0;i<arestasKruskal.size();i++)
+        {
+            vet = arestasKruskal.get(i).split(",");
+            //seleciona a primeira letra
+            for(l=0;!vet[0].equals(rotulosMA.get(l))&&l<rotulosMA.size();l++)
+            {}
+            //seleciona a segunda letra
+            for(c=0;!vet[1].equals(rotulosMA.get(c))&&c<rotulosMA.size();c++)
+            {}
+            //ve se pode colocar a aresta
+            if(!linha[l] || !coluna[c])
+            {
+                linha[l]=true;
+                coluna[c]=true;
+                aux= arestasKruskal.get(i).toString();
+                arestasMinimas.add(aux);//ta aqui o problema ???????????????????????????????????????
+                
+                custoKruskal=Integer.parseInt(vet[2]);
+                aux="";
+            }
+        }
+        return result = true;
+    }
+    public static String getOutKruskal()
+    {
+        String[] vet;
+        String out ="";
+        out="Arestas geradas:\n | ";
+        for(int i=0; i<arestasKruskal.size(); i++)
+        {
+            vet = arestasKruskal.get(i).split(",");
+            out+=vet[0]+","+vet[1]+" | ";
+        }
+        out+="\n\nArestas Minimas\n | ";
+        for(int i=0; i<arestasMinimas.size(); i++)
+        {
+            vet = arestasMinimas.get(i).split(",");
+            out+=vet[0]+","+vet[1]+" | ";
+        }
+        out+="\n\n\nCusto: "+custoKruskal;
+
+        return out;
+    }
+    
 }
